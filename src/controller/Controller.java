@@ -36,56 +36,22 @@ public class Controller {
 			int option = lector.nextInt();
 			switch(option){
 				case 1:
-					System.out.println("--------- \nCrear Arreglo \nDar capacidad inicial del arreglo: ");
-				    int capacidad = lector.nextInt();
-				    modelo = new MVCModelo(capacidad); 
-					System.out.println("Arreglo Dinamico creado");
-					System.out.println("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
-					break;
-
-				case 2:
-					System.out.println("--------- \nDar cadena (simple) a ingresar: ");
-					dato = lector.next();
-					modelo.agregar(dato);
-					System.out.println("Dato agregado");
-					System.out.println("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
-					break;
-
-				case 3:
-					System.out.println("--------- \nDar cadena (simple) a buscar: ");
-					dato = lector.next();
-					respuesta = modelo.buscar(dato);
-					if ( respuesta != null)
-					{
-						System.out.println("Dato encontrado: "+ respuesta);
+					double datos[][] = modelo.carga();
+					for(int i=0;i<datos.length;i++){
+						System.out.println("-Para el trimestre"+(i+1)+":");
+						System.out.println("	-El numero de datos leidos es:"+datos[i][0]);
+						System.out.println("	-Para el primer viaje: "+datos[i][1]+" | "+datos[i][2]+" | "+datos[i][3]+" | "+datos[i][4]);
+						System.out.println("	-Para el ultimo viaje: "+datos[i][5]+" | "+datos[i][6]+" | "+datos[i][7]+" | "+datos[i][8]);
+						System.out.println();
 					}
-					else
-					{
-						System.out.println("Dato NO encontrado");
-					}
-					System.out.println("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
+					System.out.println("Linear Probing | Separate Chaining");
+					System.out.println("Número de duplas:"+modelo.getL().getN()+"|"+modelo.getS().getN());
+					System.out.println("Tamaño final del arreglo:"+modelo.getL().getM()+"|"+modelo.getS().getM());
+					System.out.println("Factor de carga final: "+modelo.getL().factor()+"|"+modelo.getS().factor());
+					System.out.println("Número de rehashes: "+modelo.getL().numeroRe()+"|"+ modelo.getS().numeroRe());
+										
 					break;
-
-				case 4:
-					System.out.println("--------- \nDar cadena (simple) a eliminar: ");
-					dato = lector.next();
-					respuesta = modelo.eliminar(dato);
-					if ( respuesta != null)
-					{
-						System.out.println("Dato eliminado "+ respuesta);
-					}
-					else
-					{
-						System.out.println("Dato NO eliminado");							
-					}
-					System.out.println("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
-					break;
-
-				case 5: 
-					System.out.println("--------- \nContenido del Arreglo: ");
-					view.printModelo(modelo);
-					System.out.println("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
-					break;	
+	
 					
 				case 6: 
 					System.out.println("--------- \n Hasta pronto !! \n---------"); 
